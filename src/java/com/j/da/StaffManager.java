@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.ass.da;
+package com.j.da;
 
-import edu.ass.entity.Staff;
+import com.j.entity.Staff;
 import java.sql.Connection;
 
 import java.sql.PreparedStatement;
@@ -23,27 +23,24 @@ import java.util.logging.Logger;
  */
 public class StaffManager {
 
-    public static Staff Login(String user, String pass) {
+    public static int Login(String user,String pass) {
 
         try {
-            Connection connection = new Db().getConnection();
+            Connection connection = new DataConnector().getConnection();
             PreparedStatement statement
                     = connection.prepareStatement("select * from Staff where Username=? and Password=?");
             statement.setString(1, user);
             statement.setString(2, pass);
             ResultSet rs = statement.executeQuery();
-            Staff s = null;
+           
             if (rs.next()) {
-                s = new Staff(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4));
+                return rs.getInt("id");
             }
-            return s;
+           
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(BookManager.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
+           return 0;
         }
-
-    }
-
-    public static void main(String[] args) {
+        return 0;
     }
 }

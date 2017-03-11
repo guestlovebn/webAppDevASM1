@@ -3,11 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.ass.controller;
+package com.j.controller;
 
-import edu.ass.model.ViewBookBean;
+import com.j.da.BookManager;
+import com.j.da.OrderManager;
+import com.j.entity.Order;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
+
+
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,7 +24,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Tien Nguyen
  */
-public class searchServlet extends HttpServlet {
+public class BorrowServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,10 +43,10 @@ public class searchServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet searchServlet</title>");            
+            out.println("<title>Servlet BorrowServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet searchServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet BorrowServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -58,7 +64,10 @@ public class searchServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String idbook = request.getParameter("book");
+        request.setAttribute("book", BookManager.getById(Integer.parseInt(idbook)));
+        RequestDispatcher rd = request.getRequestDispatcher("borrow.jsp");
+        rd.forward(request, response);
     }
 
     /**
@@ -72,16 +81,33 @@ public class searchServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-          response.setContentType("text/html;charset=UTF-8");
-        String keyword = request.getParameter("search");
-        ViewBookBean view = new ViewBookBean();
-        view.setKeyword(keyword);
-        view.GetByKey();
-      
-        RequestDispatcher rd = request.getRequestDispatcher("resultSearch.jsp");
+        response.setContentType("text/html;charset=UTF-8");
+        Order order = new Order();
+        order.setName(request.getParameter("name"));
+        String a = request.getParameter("idStaff");
+        order.setIdStaff(Integer.parseInt(a));
+        String b = request.getParameter("idbook");
+        order.setIdbook(Integer.parseInt(b));
+        order.setDay(Integer.parseInt(request.getParameter("daynumber")));
+        if (request.getParameter("note") != null) {
+            order.setNote(request.getParameter("note"));
+        }
+        Date date = new Date();
+        
+        order.setBorrowDate(new java.sql.Date(date.getTime()));
+        
+        System.out.println("");
+        order.setStatus(true);
+
+        if (OrderManager.AddNew(order)) {
+            request.setAttribute("stt", "ok");
+        } else {
+            request.setAttribute("stt", "bad");
+        }
+
+        RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
         rd.forward(request, response);
-        
-        
+
     }
 
     /**

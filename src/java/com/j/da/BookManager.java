@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.ass.da;
+package com.j.da;
 
-import edu.ass.entity.Book;
-import java.lang.reflect.Array;
+import com.j.entity.Book;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,9 +24,9 @@ public class BookManager {
     public static List<Book> getAll() {
 
         try {
-            Connection connection = new Db().getConnection();
+            Connection connection = new DataConnector().getConnection();
             PreparedStatement statement
-                    = connection.prepareStatement("select * from Book");
+                    = connection.prepareStatement("select * from Books");
 
             ResultSet rs = statement.executeQuery();
             List<Book> books = new LinkedList<>();
@@ -46,9 +45,9 @@ public class BookManager {
     public static Book getById(int id) {
 
         try {
-            Connection connection = new Db().getConnection();
+            Connection connection = new DataConnector().getConnection();
             PreparedStatement statement
-                    = connection.prepareStatement("select * from Book where id=?");
+                    = connection.prepareStatement("select * from Books where id=?");
             statement.setInt(1, id);
             ResultSet rs = statement.executeQuery();
             Book book = null;
@@ -66,9 +65,9 @@ public class BookManager {
 
     public static List<Book> searchByName(String name) {
         try {
-            Connection connection = new Db().getConnection();
+            Connection connection = new DataConnector().getConnection();
             PreparedStatement statement
-                    = connection.prepareStatement("select * from Book where Name like ? or code like ?");
+                    = connection.prepareStatement("select * from Books where Name like ? or code like ?");
             statement.setString(1, "%" + name + "%");
             statement.setString(2, "%" + name.toUpperCase() + "%");
 
@@ -84,10 +83,6 @@ public class BookManager {
             return null;
         }
 
-    }
-
-    public static void main(String[] args) {
-        System.out.println(searchByName("D").get(0).getName());
     }
 
 }

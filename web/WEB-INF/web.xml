@@ -6,15 +6,15 @@
     </servlet>
     <servlet>
         <servlet-name>searchServlet</servlet-name>
-        <servlet-class>edu.ass.controller.searchServlet</servlet-class>
+        <servlet-class>com.j.controller.searchServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>edu.ass.controller.LoginServlet</servlet-class>
+        <servlet-class>com.j.controller.LoginServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>BorrowServlet</servlet-name>
-        <servlet-class>edu.ass.controller.BorrowServlet</servlet-class>
+        <servlet-class>com.j.controller.BorrowServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>VewBookServlet</servlet-name>

@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.ass.da;
+package com.j.da;
 
-import edu.ass.entity.Order;
+import com.j.entity.Order;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -25,9 +25,9 @@ public class OrderManager {
 
     public static List<Order> getBorrow() {
         try {
-            Connection connection = new Db().getConnection();
+            Connection connection = new DataConnector().getConnection();
             PreparedStatement statement
-                    = connection.prepareStatement("select * from Orders where status=true");
+                    = connection.prepareStatement("select * from datsach where status=true");
 
             ResultSet rs = statement.executeQuery();
             List<Order> orders = new LinkedList<>();
@@ -43,9 +43,9 @@ public class OrderManager {
     }
     public static List<Order> getAll() {
         try {
-            Connection connection = new Db().getConnection();
+            Connection connection = new DataConnector().getConnection();
             PreparedStatement statement
-                    = connection.prepareStatement("select * from Orders ");
+                    = connection.prepareStatement("select * from datsach ");
 
             ResultSet rs = statement.executeQuery();
             List<Order> orders = new LinkedList<>();
@@ -65,8 +65,8 @@ public class OrderManager {
         o.setId(getAll().size()+1);
         try {
 
-            String sql = "INSERT INTO Orders VALUES(?,?,?,?,?,?,?,?,?)";
-            Connection connection = new Db().getConnection();
+            String sql = "INSERT INTO datsach VALUES(?,?,?,?,?,?,?,?,?)";
+            Connection connection = new DataConnector().getConnection();
             try (PreparedStatement prst = connection.prepareStatement(sql)) {
                 prst.setInt(1, o.getId());
                 prst.setInt(2, o.getIdbook());

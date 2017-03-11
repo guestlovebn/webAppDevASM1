@@ -20,7 +20,9 @@
     <body>
         <c:if test="${sessionScope.userId==null}">
             <jsp:forward page="login.jsp" />
+            
         </c:if>
+       
 
         <div id="wrapper">
             <h1>
@@ -41,7 +43,7 @@
                     <a type="button" href="" class="btn btn-primary">Đăng xuất</a>
                 </div>
             </div>
-            <jsp:useBean id="book" class="edu.ass.model.ViewBookBean" scope="session"/>
+            <jsp:useBean id="book" class="com.j.model.ViewBookBean" scope="session"/>
 
 
             <div class="panel panel-primary">

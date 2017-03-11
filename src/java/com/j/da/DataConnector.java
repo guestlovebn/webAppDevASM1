@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.ass.da;
+package com.j.da;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,15 +13,18 @@ import java.sql.SQLException;
  *
  * @author LongChimNgan
  */
-public class Db {
+public class DataConnector {
+
     private Connection connection = null;
-    public Connection getConnection() throws ClassNotFoundException, SQLException{
-        
-        if(connection == null){
+
+    public Connection getConnection() throws ClassNotFoundException, SQLException {
+
+        if (connection == null) {
             Class.forName("org.apache.derby.jdbc.ClientDriver");
-            String user = "sa";
-            String url = "jdbc:derby://localhost:1527/AptechLibrary";
-            connection =  DriverManager.getConnection(url, user, user);
+            String user = "root";
+            String pass = "0412";
+            String url = "jdbc:derby://localhost:1527/BookLibrary";
+            connection = DriverManager.getConnection(url, user, pass);
             return connection;
         }
         return connection;

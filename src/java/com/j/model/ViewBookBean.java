@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.ass.model;
+package com.j.model;
 
-import edu.ass.da.BookManager;
-import edu.ass.da.OrderManager;
-import edu.ass.entity.Book;
-import edu.ass.entity.Order;
+import com.j.da.BookManager;
+import com.j.da.OrderManager;
+import com.j.entity.Book;
+import com.j.entity.Order;
 import java.util.ArrayList;
 import java.util.List;
 

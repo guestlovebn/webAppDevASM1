@@ -39,7 +39,7 @@
                     <a type="button" href="" class="btn btn-primary">Đăng xuất</a>
                 </div>
             </div>
-            <jsp:useBean id="book" class="edu.ass.model.ViewBookBean" />
+            <jsp:useBean id="book" class="com.j.model.ViewBookBean" />
 
 
             <div class="panel panel-primary">

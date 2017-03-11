@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.ass.controller;
+package com.j.controller;
 
-import edu.ass.da.StaffManager;
-import edu.ass.entity.Staff;
+import com.j.da.StaffManager;
+import com.j.entity.Staff;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -77,9 +77,9 @@ public class LoginServlet extends HttpServlet {
         HttpSession session = request.getSession(false);
         String user = request.getParameter("email");
         String pass = request.getParameter("password");
-        Staff s = StaffManager.Login(user, pass);
-        if (s!= null) {
-            session.setAttribute("userId", s.getId());     
+        int flag = StaffManager.Login(user, pass);
+        if (flag != 0) {
+            session.setAttribute("userId", flag);
             RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
             rd.forward(request, response);
         } else {
