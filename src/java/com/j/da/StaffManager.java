@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * Author : Tien Nguyen Created on : Mar 10, 2017, 5:05:48 PM
+ * Author : DSLP Created on : Mar 10, 2017, 5:05:48 PM
  *
  */
 public class StaffManager {

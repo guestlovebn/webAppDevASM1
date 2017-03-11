@@ -1,7 +1,7 @@
 <%-- 
     Document   : borrow
     Created on : Mar 10, 2017, 10:18:38 PM
-    Author     : Tien Nguyen
+    Author     : DSLP
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

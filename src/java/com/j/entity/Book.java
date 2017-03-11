@@ -7,7 +7,7 @@ package com.j.entity;
 
 /**
  *
- * @author Tien Nguyen
+ * @author DSLP
  */
 public class Book {
 

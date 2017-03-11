@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author LongChimNgan
+ * @author DSLP
  */
 public class DataConnector {
 

@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  *
- * @author Tien Nguyen
+ * @author DSLP
  */
 public final class ViewBookBean {
 

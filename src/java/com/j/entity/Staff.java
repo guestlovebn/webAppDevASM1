@@ -7,7 +7,7 @@ package com.j.entity;
 
 /**
  *
- * @author Tien Nguyen
+ * @author DSLP
  */
 public class Staff {
     private int id;

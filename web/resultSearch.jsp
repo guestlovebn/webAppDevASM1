@@ -1,7 +1,7 @@
 <%-- 
     Document   : resultSearch
     Created on : Mar 10, 2017, 3:36:46 PM
-    Author     : Tien Nguyen
+    Author     : DSLP
 --%>
 
 
